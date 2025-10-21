@@ -1,0 +1,291 @@
+:root {
+    --z-index: 9999;
+}
+
+body {
+    --scroll-translate-y: 0px;
+    --scroll-translate-x: 0px;
+    --scale-app: 0.8;
+    overflow: hidden;
+}
+
+#app-wrapper {
+    position: relative;
+    overflow: hidden;
+    transform: translate(var(--scroll-translate-x), var(--scroll-translate-y)) scale(var(--scale-app));
+    transform-origin: 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: calc(6rem / var(--scale-app));
+}
+
+.ghost {
+    pointer-events: none !important;
+    opacity: 0.5 !important;
+}
+.ghost > * {
+    opacity: 0.5 !important;
+}
+.ghost * {
+    pointer-events: none !important;
+}
+
+.ghost::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: repeating-linear-gradient(0deg, rgba(128, 128, 128, 1), rgba(128, 128, 128, 1) 1px, transparent 1px, transparent 10px);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.ghost::after {
+    content: 'unlock';
+    background-image: url('/assets/icons/ghost-white.svg');
+    background-size: 20px 20px;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: all !important;
+    padding: 0.25rem 0.5rem;
+    padding-left: 24px; /* 18px de icono + 4px de espacio */
+    background-color: #464545;
+    color: #ffffff;
+    border-radius: 0.5rem;
+    font-size: 0.7rem;
+    z-index: 3;
+    cursor: pointer;
+}
+
+body {
+    background-color: transparent;
+}
+
+.wmw > * {
+    user-select: none;
+}
+
+.interaction-enabled * {
+    cursor: unset !important;
+}
+
+.wmw.hovered,
+.wmw.parent-selected {
+    outline: 1px solid #5c7aff; /* Más saturado que #a0aec0 */
+    outline-offset: -1px;
+}
+
+.wmw[wt='layout'].hovered {
+    outline-color: #ff6b00; /* Más saturado que #ed8936 */
+}
+
+.wmw:not([wt='layout']):not([wt='content']):not([wt='tab']) > *:not(placeholder):not(#context-menu):not(.wmw):not(.tab-area) {
+    pointer-events: none !important;
+}
+
+.wmw[wt='tab'] > .tab-content > * {
+    pointer-events: none !important;
+}
+
+.wmw[wt='content'] {
+    display: flex;
+    flex-direction: column;
+    outline: none !important;
+    pointer-events: none !important;
+}
+
+/* Nueva regla para permitir eventos en los hijos de content */
+.wmw[wt='content'] > * {
+    pointer-events: auto !important;
+}
+
+[wt='tab']::before {
+    content: 'Táb area';
+    position: absolute;
+    top: 1px;
+    left: 0;
+    transform: translate(0, -100%);
+    width: aut;
+    pointer-events: all;
+    z-index: 2;
+    background: #ff6a00;
+    color: white;
+    font-size: 10px;
+    height: 14px;
+    padding: 2px 4px;
+}
+[wt='tab']::after {
+    content: '';
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 3;
+    outline: 2px solid #ff6a00;
+    outline-offset: -2px;
+}
+.temporal {
+    position: absolute;
+    z-index: var(--z-index);
+    pointer-events: none;
+}
+.temporal-guide {
+    position: absolute;
+    z-index: var(--z-index);
+    pointer-events: none;
+    background: rgb(236, 72, 153);
+}
+node-handler {
+    position: absolute;
+    z-index: var(--z-index);
+    pointer-events: none;
+    outline: 1px solid rgb(236, 72, 153);
+    display: block;
+    outline-offset: -1px;
+}
+node-handler,
+node-handler * {
+    user-select: none !important;
+}
+.double-handler {
+    z-index: 3;
+    outline: 1px solid rgb(236, 72, 153);
+    background-color: white;
+    border-radius: 25%;
+}
+
+.radius-handler {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    height: 9px;
+    width: 9px;
+    background-color: white;
+    outline: 2px solid rgb(236, 72, 153);
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: all;
+    transform: translate(-50%, -50%);
+}
+
+node-handler.disable-resize-corner .bottom-right-handler,
+node-handler.disable-resize-corner .bottom-left-handler,
+node-handler.disable-resize-corner .top-right-handler,
+node-handler.disable-resize-corner .top-left-handler,
+node-handler.disable-resize-horizontal .left-handler,
+node-handler.disable-resize-horizontal .right-handler,
+node-handler.disable-resize-vertical .top-handler,
+node-handler.disable-resize-vertical .bottom-handler,
+node-handler.disable-radius .radius-handler {
+    display: none;
+}
+node-handler.disable-visual-handlers {
+    outline: none;
+}
+
+node-handler.disable-visual-handlers > *:not(.radius-handler) {
+    display: none;
+}
+
+body.enable-adders placeholder {
+    background-color: #4400ffee; /* Más saturado y más opaco */
+    color: white;
+    outline: 1px solid #4400ff; /* Borde más grueso */
+    pointer-events: auto;
+}
+body.enable-adders node-handler {
+    display: none;
+}
+
+.wmw[wt='tab'].selected > .tab-area {
+    display: flex;
+}
+
+.wmw[wt='tab'] > .tab-area > .tab-action {
+    background: #ff6a00;
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+[wt='tab'] > .tab-area button {
+    background: transparent;
+    border: 2px solid #ff6a00;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    cursor: pointer;
+}
+
+[wt='tab'] > .tab-area > button {
+    background: #ff6a00;
+    color: white;
+}
+.wmw[wt='tab']:hover > .tab-area {
+    opacity: 1;
+}
+
+body[mode='tab-editor'] .wmw[wt='content'] {
+    gap: 1rem;
+    /* background-color: #4400ff; */
+}
+
+body[mode='tab-editor'] .wmw[wt='content'] > * {
+    outline: 1px dashed #5c7aff; /* Más saturado que #a0aec0 */
+    outline-offset: -1px;
+}
+
+.info-node {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    background: #ec4899;
+    color: white;
+    padding: 1px 0.25rem;
+    z-index: 2;
+    transform: translate(-50%, calc(100% + 2px));
+    font-size: 10px;
+    line-height: normal;
+    border-radius: 0.25rem;
+    pointer-events: none;
+    white-space: nowrap;
+}
+.info-node::before {
+    content: 'size: ';
+}
+
+.custom-component > * {
+    pointer-events: none !important;
+}
+.wmw[wt='tab'] > .tab-area {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: all !important;
+    z-index: 2;
+    gap: 0.25rem;
+    top: -32px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    display: none;
+}
+
+.fade-in {
+    animation: fadeIn 0.5s linear infinite;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}

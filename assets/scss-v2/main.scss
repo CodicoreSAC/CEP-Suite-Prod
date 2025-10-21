@@ -1,0 +1,56 @@
+// =============================================================================
+// Main SCSS File (v2)
+// =============================================================================
+// Este archivo es el punto de entrada principal para todos los estilos SCSS.
+// Importa todos los parciales en el orden correcto siguiendo la arquitectura 7-1.
+// =============================================================================
+
+// 1. Abstracts: Contiene variables, funciones, mixins y placeholders.
+@use 'abstracts/colors';
+@use 'abstracts/variables';
+@use 'abstracts/functions';
+
+// 2. Base: Contiene estilos base, reseteo y tipografía.
+@import 'base/reset';
+@import 'base/typography';
+@import 'base/global'; // Contiene overrides globales
+
+// 3. Vendors: Sobreescrituras para librerías de terceros.
+@import 'vendors/angular';
+@import 'vendors/context-menu';
+@import 'vendors/google-maps';
+@import 'vendors/owl-datetimepicker';
+@import 'vendors/sweet-alert';
+
+// 4. Components: Estilos para componentes de UI reutilizables.
+@import 'components/accordion';
+@import 'components/alert';
+@import 'components/card';
+@import 'components/box';
+@import 'components/buttons';
+@import 'components/dropdown';
+@import 'components/form';
+@import 'components/modal';
+@import 'components/navs';
+@import 'components/ng_select';
+@import 'components/spinner';
+@import 'components/table';
+@import 'components/text-editor';
+
+// 5. Layout: Estilos para la estructura principal de la aplicación.
+@import 'layout/menu';
+@import 'layout/template';
+
+// 6. Pages: Estilos específicos para páginas o funcionalidades.
+@import 'pages/account';
+@import 'pages/facturacion';
+@import 'pages/tramite_documentario';
+@import 'pages/mode_list';
+
+// 7. Themes: Lógica de temas de color y modo oscuro/claro.
+@import 'themes/theme';
+@import 'themes/template1';
+
+.text-muted {
+    color: var(--text-color-opacity-50) !important;
+}

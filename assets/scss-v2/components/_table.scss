@@ -1,0 +1,230 @@
+// =============================================================================
+// Components -> Table
+// =============================================================================
+// Contiene estilos personalizados para tablas.
+// Incluye estilos base y estilos para el tema oscuro extraídos de _theme.scss.
+// =============================================================================
+
+.table-sm td,
+.table-sm th {
+    padding: 0 0.25rem;
+}
+
+.table-md td,
+.table-md th {
+    padding: 0.25rem 0.25rem;
+}
+
+.td_error {
+    background-color: #ff00000d;
+    color: red;
+}
+.td_success {
+    background: #f4fff6;
+    color: #00691d;
+}
+.td_warning {
+    background-color: #ffb90012;
+    color: #d16a00;
+}
+
+.td_blue {
+    background-color: rgb(0 173 255 / 15%);
+    color: #0088c5;
+}
+
+.table {
+    &.table-box {
+        --bs-table-border-color: var(--table-box-cell-border);
+        thead {
+            th {
+                border: 0;
+                padding: 0 5px;
+                text-transform: uppercase;
+                font-size: 12px;
+                color: #737373;
+                font-weight: bold;
+                text-align: center;
+                vertical-align: middle;
+                border-right: 1px solid var(--table-box-cell-border);
+            }
+        }
+        tbody {
+            tr {
+                width: 220px;
+                margin: 5px;
+                position: relative;
+                padding-top: 40px;
+                background: var(--table-box-bg);
+                box-shadow: var(--table-box-shadow);
+                color: var(--table-box-color);
+                border-radius: 7px;
+                padding: 15px;
+                td {
+                    position: relative;
+                    vertical-align: middle;
+                    border-top: 1px solid var(--table-box-cell-border);
+                    border-right: 1px solid var(--table-box-cell-border);
+                    border-color: var(--table-box-cell-border);
+
+                    &.td_error { background: var(--red-bg); color: var(--red); }
+                    &.td_success { background: var(--green-bg); color: var(--green); }
+                    &.td_warning { background: var(--orange-bg); color: var(--orange); }
+                    &.td_blue { background: var(--blue-bg); color: var(--blue); }
+                }
+
+                &.tr_error,
+                &.tr_error td {
+                    background: var(--red-bg);
+                    color: var(--red);
+                }
+                &.tr_success,
+                &.tr_success td {
+                    background: var(--green-bg);
+                    color: var(--green);
+                }
+                &.tr_warning,
+                &.tr_warning td {
+                    background: var(--orange-bg);
+                    color: var(--orange);
+                }
+
+                &:hover {
+                    td {
+                        color: var(--primary);
+                    }
+                }
+                td {
+                    .form-control {
+                        border: 1px solid #dcdcdc;
+                        background: var(--bg-card);
+                    }
+                }
+                &.active {
+                    td {
+                        background: var(--table-box-active-bg);
+                        color: var(--primary) !important;
+                        font-weight: 700;
+                        box-shadow: none;
+                        .form-control {
+                            border: 1px solid #00a0ff;
+                        }
+                    }
+
+                    &.tr_error, &.tr_error td { background: var(--red-bg); color: var(--red); }
+                    &.tr_success, &.tr_success td { background: var(--green-bg); color: var(--green); }
+                    &.tr_warning, &.tr_warning td { background: var(--orange-bg); color: var(--orange); }
+                }
+            }
+        }
+    }
+}
+.btn-more {
+    font-size: 1.5rem;
+    line-height: 1;
+    background: transparent;
+    color: var(--primary-color);
+    &.btn-more-sm {
+        --bs-btn-padding-y: 0;
+        font-size: 1.1rem;
+    }
+}
+
+.table-fixed {
+    width: 100%;
+    thead {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+        box-shadow: 0px 3px 4px #00000012;
+        th {
+            position: sticky;
+            top: 0;
+        }
+    }
+}
+
+.table-datos {
+    &.box-main {
+        overflow: hidden;
+    }
+    > tbody {
+        > tr {
+            > td:first-child:not(.not),
+            td._resaltar {
+                background: #f0faff;
+                border-right: 1px solid #dee2e6;
+                font-size: 0.7rem;
+                vertical-align: middle;
+            }
+        }
+    }
+
+    td {
+        border-right: 1px solid #dee2e6;
+    }
+}
+
+table,
+.table {
+    margin: 0;
+    tbody {
+        tr:last-child {
+            td {
+                border-bottom: none;
+            }
+        }
+    }
+}
+
+._amount {
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0 10px;
+    text-align: right;
+    line-height: 1;
+    &.xl { font-size: 2rem; }
+    &.xs { font-size: 1rem; }
+}
+
+// Estilos para tema oscuro extraídos de _theme.scss
+body {
+    &.fdark,
+    &.dark {
+        .table-datos td {
+            border-color: var(--table-box-cell-border);
+        }
+
+        .table {
+            --bs-table-striped-color: white;
+            --bs-table-striped-bg: #1c1c1c;
+            --bs-table-color: white;
+            --bs-table-border-color: black;
+            --bs-table-bg: #121212;
+        }
+
+        .table-datos > tbody > tr > td:first-child:not(.not),
+        .table-datos > tbody > tr td._resaltar {
+            background: #001f2f78;
+            border-color: #001f2f78;
+        }
+
+        .table.table-box tbody tr.tr_error {
+            background: #ff8f8f1f;
+            color: red;
+        }
+        .table.table-box tbody tr.tr_warning {
+            background: #ffb90005;
+            color: #ff901f;
+        }
+        .table.table-box tbody tr.tr_success {
+            background: #1a301b0d;
+            color: #00c508;
+        }
+
+        .table.table-box tbody tr td .form-control {
+            background-color: black;
+            border-color: #404040;
+        }
+    }
+}

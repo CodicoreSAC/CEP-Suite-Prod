@@ -1,0 +1,241 @@
+// =============================================================================
+// Themes -> Theme
+// =============================================================================
+// Este archivo es el núcleo del sistema de temas.
+// Define las paletas de colores, genera las variables CSS para cada tema
+// y gestiona el modo claro/oscuro.
+// =============================================================================
+
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use '../abstracts/functions' as *; // Importa las funciones de color
+@use '../abstracts/colors' as *; // Importa la paleta de colores base
+
+// Mapeo de temas con su color primario
+$themes: (
+    'tema-orange': #ffb300,
+    'fucsia': #e91e63,
+    'azul': #3752e6,
+    'default': #3752e6,
+    'verde': #10b263,
+    'morado': #7a36fd,
+    'anaranjado': #f24727,
+    'rojo-vino': #7b031d,
+    'azul-cielo': #1075f0,
+);
+
+// Mapeo de colores secundarios para cada tema
+$secondary-colors: (
+    'tema-orange': #0a0d13,
+    'fucsia': #28303d,
+    'azul': #f5d419,
+    'default': #28303d,
+    'verde': #030f0f,
+    'morado': #050505,
+    'anaranjado': #0a0e23,
+    'rojo-vino': #28303d,
+    'azul-cielo': #28303d,
+);
+
+// Variables base para modo claro y oscuro
+$lighter: #fff;
+$darker: #040408;
+
+$bg-light: #f1f4f9;
+$text-color-light: #2f2f2f;
+$bg-card-light: #ffffff;
+
+$bg-dark: #1f1f1f;
+$text-color-dark: #f1f4f9;
+$bg-card-dark: #2f2f2f;
+
+// Función para obtener el color secundario (depende de los mapas de este archivo)
+@function get-secondary-color($primary-color) {
+    @each $theme-name, $theme-primary in $themes {
+        @if $theme-primary == $primary-color {
+            @return map.get($secondary-colors, $theme-name);
+        }
+    }
+    @return #6b7280; // Fallback
+}
+
+// Mixin principal que genera las variables de un tema
+@mixin theme-colors($base) {
+    $bg: $bg-light;
+    $bg-card: $bg-card-light;
+    $secondary: get-secondary-color($base);
+
+    --primary: #{$base};
+    --primary-opacity-10: #{rgba($base, 0.1)};
+    --primary-opacity-20: #{rgba($base, 0.2)};
+    --primary-opacity-25: #{rgba($base, 0.25)};
+    --primary-opacity-50: #{rgba($base, 0.5)};
+    --primary-10: #{color.mix($bg-card, $base, 90%)};
+    --primary-20: #{color.mix($bg-card, $base, 80%)};
+    --primary-25: #{color.mix($bg-card, $base, 75%)};
+    --primary-50: #{color.mix($bg-card, $base, 50%)};
+
+    --primary-hover: #{color.adjust($base, $lightness: -5%)};
+    --primary-tab: var(--primary-hover);
+    --primary-pastel: var(--primary-10);
+    --text-on-primary: #{text-color-generator($base)};
+    --text-primary: #{adjust-text-color($base)};
+
+    --secondary: #{$secondary};
+    --secondary-opacity-10: #{rgba($secondary, 0.1)};
+    --secondary-opacity-20: #{rgba($secondary, 0.2)};
+    --secondary-opacity-25: #{rgba($secondary, 0.25)};
+    --secondary-opacity-50: #{rgba($secondary, 0.5)};
+    --secondary-hover: #{color.adjust($secondary, $lightness: 5%)};
+    --text-on-secondary: #{text-color-generator($secondary)};
+    --text-secondary: #{adjust-text-color($secondary)};
+
+    --slide-link-hover-color: var(--primary);
+    --slide-active-bg: var(--primary);
+    --slide-active-shadow: transparent;
+    --slide-link-hover-bg: var(--primary-opacity-10);
+
+    --bs-primary: var(--primary);
+    --bs-primary-hover: var(--primary-hover);
+    --bs-secondary: var(--secondary);
+    --bs-secondary-hover: var(--secondary-hover);
+    --navbar-bg: var(--primary);
+    &:not(.flotante) {
+        --navbar-border-color: var(--primary-tab);
+    }
+    &.fdark {
+        $bg: $bg-dark;
+        $bg-card: $bg-card-dark;
+        --primary-10: #{color.mix($bg-card, $base, 90%)};
+        --primary-20: #{color.mix($bg-card, $base, 80%)};
+        --primary-25: #{color.mix($bg-card, $base, 75%)};
+        --primary-50: #{color.mix($bg-card, $base, 50%)};
+        --text-primary: #{adjust-dark-text-color($base)};
+        --text-secondary: #{adjust-dark-text-color($secondary)};
+    }
+}
+
+// Bloque principal donde se aplican los temas y el modo oscuro
+body {
+    $bg: $bg-light;
+    $text-color: $text-color-light;
+    $bg-card: $bg-card-light;
+
+    background: var(--bg);
+    color: var(--text-color);
+
+    // Variables base de colores y fondos
+    --bg: #{$bg};
+    --text-color: #{$text-color};
+    --text-color-light: #{$text-color};
+    --bg-card: #{$bg-card};
+    --bg-card-100: #{color.adjust($bg, $lightness: -2%)};
+    --bg-card-200: #{color.adjust($bg, $lightness: -5%)};
+    --bg-card-300: #{color.adjust($bg, $lightness: -10%)};
+
+    --fuse-bg-card: var(--bg-card);
+    --fuse-bg-card-100: var(--bg-card-100);
+    --fuse-bg-card-200: var(--bg-card-200);
+    --fuse-bg-card-300: var(--bg-card-300);
+
+    --fuse-text-default: var(--text-color);
+    --border-color: #{color.mix($bg, black, 90%)};
+
+    --text-color-invert: #ffffff;
+    --text-color-dark: #ffffff;
+    --text-color-opacity-10: #{rgba($text-color, 0.1)};
+    --text-color-opacity-20: #{rgba($text-color, 0.2)};
+    --text-color-opacity-25: #{rgba($text-color, 0.25)};
+    --text-color-opacity-50: #{rgba($text-color, 0.5)};
+
+    --bg-card-opacity-10: #{rgba($bg-card, 0.1)};
+    --bg-card-opacity-20: #{rgba($bg-card, 0.2)};
+    --bg-card-opacity-25: #{rgba($bg-card, 0.25)};
+    --bg-card-opacity-50: #{rgba($bg-card, 0.5)};
+    --bg-card-opacity-75: #{rgba($bg-card, 0.75)};
+
+    --navbar-border-color: var(--border-color);
+
+    // Tema por defecto
+    @include theme-colors(#056bd1);
+
+    // Generación de variables para la paleta de colores base
+    @each $name, $base in $colors {
+        --#{$name}: #{$base};
+        --#{$name}-bg: #{color.mix(white, $base, 90%)};
+    }
+
+    --bs-info: #{$info};
+    --bs-info-hover: #{color.adjust($info, $lightness: 5%)};
+
+    // Generación de todas las clases de tema
+    @each $theme-name, $base-color in $themes {
+        &.#{$theme-name} {
+            @include theme-colors($base-color);
+            --filter: var(--filter-#{$theme-name});
+            --filter-primary: var(--filter-#{$theme-name});
+        }
+    }
+
+    // Generación de variables y clases para colores de estado (success, warning, etc.)
+    @each $status-color in $main-colors {
+        .alert-#{$status-color} {
+            --bs-alert-color: var(--text-#{$status-color});
+            --bs-alert-bg: var(--#{$status-color}-10);
+            --bs-alert-border-color: var(--#{$status-color}-50);
+        }
+        .state-#{$status-color} {
+            color: var(--text-#{$status-color});
+            background-color: var(--#{$status-color}-opacity-10);
+        }
+        .bg-#{$status-color} {
+            background-color: var(--#{$status-color}) !important;
+            color: var(--text-on-#{$status-color}) !important;
+        }
+        .border-#{$status-color} {
+            border-color: var(--#{$status-color}) !important;
+        }
+        .text-#{$status-color} {
+            color: var(--text-#{$status-color}) !important;
+        }
+        .color-#{$status-color} {
+            color: var(--#{$status-color}) !important;
+        }
+    }
+    @each $status-color, $base in $status-color {
+        $bg-card: $bg-card-light;
+        --#{$status-color}: #{$base};
+        --#{$status-color}-hover: #{color.adjust($base, $lightness: 5%)};
+        --#{$status-color}-opacity-10: #{rgba($base, 0.1)};
+        --#{$status-color}-opacity-20: #{rgba($base, 0.2)};
+        --#{$status-color}-opacity-25: #{rgba($base, 0.25)};
+        --#{$status-color}-opacity-50: #{rgba($base, 0.5)};
+        --#{$status-color}-10: #{color.mix($bg-card, $base, 90%)};
+        --#{$status-color}-20: #{color.mix($bg-card, $base, 80%)};
+        --#{$status-color}-25: #{color.mix($bg-card, $base, 75%)};
+        --#{$status-color}-50: #{color.mix($bg-card, $base, 50%)};
+        --text-#{$status-color}: #{adjust-text-color($base)};
+        --text-on-#{$status-color}: #{text-color-generator($base)};
+        --bs-#{$status-color}: var(--#{$status-color});
+        --bs-#{$status-color}-hover: var(--#{$status-color}-hover);
+    }
+
+    // Variables para colores de estado light/dark
+    $light-status: #f3f4f6;
+    --light: #{$light-status};
+    --light-hover: #{color.adjust($light-status, $lightness: 5%)};
+    --light-opacity-10: #{rgba($light-status, 0.1)};
+    --light-opacity-20: #{rgba($light-status, 0.2)};
+    --text-on-light: #111827;
+    --text-light: #{$light-status};
+
+    $dark-status: #111827;
+    --dark: #{$dark-status};
+    --dark-hover: #{color.adjust($dark-status, $lightness: 5%)};
+    --dark-opacity-10: #{rgba($dark-status, 0.1)};
+    --dark-opacity-20: #{rgba($dark-status, 0.2)};
+    --text-on-dark: #ffffff;
+    --text-dark: #{$dark-status};
+}
+@import 'theme.dark';

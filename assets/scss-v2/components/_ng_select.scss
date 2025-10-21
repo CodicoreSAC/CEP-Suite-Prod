@@ -1,0 +1,65 @@
+// =============================================================================
+// Components -> ng-select
+// =============================================================================
+// Contiene estilos para el componente ng-select y antd-select.
+// =============================================================================
+
+.ng-select {
+    .ng-select-container {
+        border: 1px solid var(--border-color);
+        height: var(--control-form-md-height);
+        min-height: auto;
+    }
+    &.sm {
+        .ng-select-container {
+            height: var(--control-form-sm-height);
+        }
+    }
+}
+
+.ng-select.h-auto {
+    .ng-select-container {
+        height: auto !important;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+    }
+}
+
+// select zorro
+.ant-select-single {
+    &.ant-select-sm {
+        height: var(--control-form-sm-height);
+    }
+}
+.ant-select:not(.ant-select-customize-input) .ant-select-selector {
+    color: var(--form-control-color);
+    background-color: var(--form-control-bg);
+    border: 1px solid var(--form-control-border);
+    border-radius: var(--control-radius);
+}
+.ant-select-arrow {
+    color: var(--form-control-color);
+}
+
+// Estilos extraídos de codicore-fe/src/styles.scss
+.ng-select {
+    &._sm {
+        .ng-select-container {
+            height: 20px;
+            font-weight: bold;
+            color: black;
+            min-height: auto;
+        }
+
+        .ng-select-container .ng-value-container .ng-input {
+            top: 0;
+        }
+    }
+}
+
+.ng-select .ng-select-container {
+    color: var(--form-control-primary-color);
+    background-color: var(--form-control-primary-bg);
+    border: 1px solid var(--form-control-primary-border);
+    font-weight: bold;
+}

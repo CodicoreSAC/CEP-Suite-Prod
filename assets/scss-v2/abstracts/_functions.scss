@@ -1,0 +1,48 @@
+// =============================================================================
+// Abstracts -> Functions
+// =============================================================================
+// Contiene funciones de utilidad de Sass para cálculos de color y otros
+// menesteres. No deberían generar CSS por sí mismas.
+// Extraído de _theme.scss original.
+// =============================================================================
+
+@use 'sass:color';
+@use 'sass:math';
+
+// Calcula la luminancia percibida de un color.
+// Devuelve un valor entre 0 (oscuro) y 1 (claro).
+@function luminance($base) {
+    $red: color.channel($base, 'red');
+    $green: color.channel($base, 'green');
+    $blue: color.channel($base, 'blue');
+
+    @return math.div(0.299 * $red + 0.587 * $green + 0.114 * $blue, 255);
+}
+
+// Genera un color de texto (blanco o negro con un ligero tinte) que contraste
+// con el color de fondo proporcionado.
+@function text-color-generator($bg-color) {
+    $luminance: luminance($bg-color);
+    @return if($luminance > 0.6, color.mix(black, $bg-color, 85%), white);
+}
+
+// Ajusta un color de texto para que sea más legible en un fondo de tema oscuro.
+@function adjust-dark-text-color($base-color) {
+    $luminance: luminance($base-color);
+    @return color.scale($base-color, $lightness: 65%, $saturation: 0%);
+}
+
+// Ajusta sutilmente un color de texto basado en su propia luminancia
+// para mejorar el contraste sobre fondos de color claro/medio.
+@function adjust-text-color($base-color) {
+    $luminance: luminance($base-color);
+
+    @if $luminance >= 0.65 {
+        // Colores claros → oscurece bastante y sube saturación
+        @return color.scale($base-color, $lightness: -20%, $saturation: 30%);
+    } @else if $luminance >= 0.3 {
+        // Colores medios → ligero ajuste
+        @return color.scale($base-color, $lightness: -5%, $saturation: 10%);
+    }
+    @return $base-color;
+}

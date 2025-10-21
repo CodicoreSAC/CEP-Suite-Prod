@@ -1,0 +1,19 @@
+a[href],
+.wmw[wt='button'] {
+    cursor: pointer;
+}
+
+.tab-content {
+    animation: overlay-fadeIn 0.2s;
+}
+@keyframes overlay-fadeIn {
+    0% {
+        opacity: 0;
+    }
+    10% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}

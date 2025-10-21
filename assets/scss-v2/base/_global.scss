@@ -1,0 +1,44 @@
+// =============================================================================
+// Base -> Global Styles
+// =============================================================================
+// Contiene una colección de estilos y sobreescrituras globales que no
+// pertenecen a un componente o librería específica.
+// Extraído del antiguo _reset.scss.
+// =============================================================================
+
+a {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+}
+
+// Estilos globales para la barra de scroll
+*::-webkit-scrollbar {
+    width: 0.5em;
+    height: 0.5em;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #a7a4a4;
+    outline: 1px solid slategrey;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ececec;
+}
+
+// Sobreescrituras globales para componentes de Bootstrap
+.table tbody + tbody {
+    border: none;
+}
+
+ul.pagination {
+    margin: 0 !important;
+}
+
+.dropdown-hidden.dropdown-toggle::after {
+    display: none;
+}

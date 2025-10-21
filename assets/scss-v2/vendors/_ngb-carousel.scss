@@ -1,0 +1,25 @@
+// =============================================================================
+// Vendors -> Ngb-Carousel
+// =============================================================================
+// Contiene sobreescrituras de estilos para el componente carousel de ng-bootstrap
+// cuando se usa como un menú.
+// Extraído del antiguo _template.scss.
+// =============================================================================
+
+ngb-carousel._menu {
+    .carousel-control-next-icon,
+    .carousel-control-prev-icon {
+        width: 30px;
+        height: 30px;
+        background: var(--carrusel) no-repeat center center;
+        border-radius: 50%;
+        background-size: 14px;
+    }
+
+    .carousel-control-prev-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3e%3c/svg%3e");
+    }
+    .carousel-control-next-icon {
+        background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%23fff' viewBox='0 0 8 8'%3e%3cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3e%3c/svg%3e");
+    }
+}

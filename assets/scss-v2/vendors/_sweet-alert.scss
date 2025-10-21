@@ -1,0 +1,17 @@
+// =============================================================================
+// Vendors -> SweetAlert2
+// =============================================================================
+// Contiene sobreescrituras de estilos para la librería de alertas SweetAlert2.
+// Extraído del antiguo _reset.scss.
+// =============================================================================
+
+.swal2-cancel.swal2-styled,
+.swal2-confirm.swal2-styled {
+    border-radius: 0.5rem;
+}
+.swal2-confirm.swal2-styled {
+    background-color: var(--bs-blue);
+}
+.swal2-modal {
+    border-radius: 1rem !important;
+}

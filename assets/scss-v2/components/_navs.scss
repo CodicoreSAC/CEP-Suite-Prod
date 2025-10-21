@@ -1,0 +1,38 @@
+// =============================================================================
+// Components -> Navs
+// =============================================================================
+// Contiene los estilos para los componentes de navegación como .nav y .nav-tabs.
+// Extraído de _theme.scss original.
+// =============================================================================
+
+body {
+    .nav {
+        --bs-nav-link-color: #969696;
+    }
+
+    .nav-tabs {
+        --bs-nav-tabs-link-active-color: var(--primary);
+        --bs-nav-tabs-link-active-bg: #f5f6fa;
+        --bs-nav-tabs-link-active-border-color: #dee2e6 #dee2e6 #f5f6fa;
+        --bs-nav-link-hover-color: black;
+    }
+
+    // Este bloque parece sobreescribir al anterior, consolidando estilos.
+    .nav-tabs {
+        // --bs-nav-tabs-link-active-color: #ffffff;
+        // --bs-nav-tabs-link-active-bg: #151414;
+        // --bs-nav-link-hover-color: var(--bg2_);
+        // --bs-nav-tabs-link-active-color: var(--bg2_);
+
+        --bs-nav-tabs-border-color: var(--border-color);
+        --bs-nav-tabs-link-active-bg: var(--primary-pastel);
+        --bs-nav-tabs-link-active-color: var(--primary);
+    }
+
+    &.fdark,
+    &.dark {
+        .nav {
+            --bs-nav-link-color: white;
+        }
+    }
+}

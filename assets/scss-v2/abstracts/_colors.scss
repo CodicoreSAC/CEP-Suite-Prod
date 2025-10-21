@@ -1,0 +1,31 @@
+$skyblue: #0bb8ff; // Azul cielo más saturado
+$green: #0dc75a; // Verde brillante pero agradable
+$yellow: #ffd000; // Amarillo intenso sin llegar a neón
+$red: #ff3333; // Rojo vivo y claro
+$blue: #256dff; // Azul fuerte y vibrante
+$orange: #ff7a1a; // Naranja cálido y saturado
+
+$info: $skyblue;
+$success: $green;
+$warning: $yellow;
+$danger: $red;
+
+//LIST
+$status-color: (
+    'info': #0089ff,
+    'success': $success,
+    'warning': $warning,
+    'danger': $danger,
+);
+
+$colors: (
+    'skyblue': $skyblue,
+    'green': $green,
+    'yellow': $yellow,
+    'red': $red,
+    'blue': $blue,
+    'orange': $orange,
+);
+
+// array main colors
+$main-colors: ('primary', 'secondary', 'success', 'info', 'warning', 'danger', 'light', 'dark');

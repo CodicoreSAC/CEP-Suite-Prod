@@ -1,0 +1,102 @@
+// =============================================================================
+// Abstracts -> Variables
+// =============================================================================
+// Contiene variables CSS globales para layout, tamaños de controles,
+// y otras propiedades que no están directamente ligadas a un tema de color.
+// Extraído de _theme.scss original.
+// =============================================================================
+
+:root {
+    // Filtros SVG para aplicar colores de tema a iconos negros
+    --filter-fucsia: brightness(0) saturate(100%) invert(22%) sepia(72%) saturate(6394%) hue-rotate(330deg) brightness(97%) contrast(89%);
+    --filter-azul: brightness(0) saturate(100%) invert(25%) sepia(79%) saturate(4042%) hue-rotate(229deg) brightness(95%) contrast(90%);
+    --filter-verde: brightness(0) saturate(100%) invert(58%) sepia(57%) saturate(4231%) hue-rotate(116deg) brightness(94%) contrast(87%);
+    --filter-morado: brightness(0) saturate(100%) invert(20%) sepia(91%) saturate(4488%) hue-rotate(257deg) brightness(104%) contrast(98%);
+    --filter-anaranjado: brightness(0) saturate(100%) invert(42%) sepia(30%) saturate(4500%) hue-rotate(346deg) brightness(102%) contrast(101%);
+    --filter-rojo-vino: brightness(0) saturate(100%) invert(14%) sepia(52%) saturate(3401%) hue-rotate(328deg) brightness(85%) contrast(116%);
+    --filter-azul-cielo: brightness(0) saturate(100%) invert(32%) sepia(51%) saturate(7324%) hue-rotate(204deg) brightness(94%) contrast(98%);
+    --filter-tema-orange: brightness(0) saturate(100%) invert(77%) sepia(54%) saturate(3952%) hue-rotate(0deg) brightness(105%) contrast(104%);
+    --filter-white: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7485%) hue-rotate(156deg) brightness(108%) contrast(98%);
+
+    // Tamaños para controles de formulario
+    --control-form-xs-height: 24px;
+    --control-form-sm-height: 30px;
+    --control-form-md-height: 36px;
+    --control-form-lg-height: 40px;
+    --control-form-xl-height: 44px;
+
+    // Tamaños de fuente para controles de formulario
+    --control-fs-xs: 10px;
+    --control-fs-sm: 12px;
+    --control-fs-md: 14px;
+    --control-fs-lg: 16px;
+    --control-fs-xl: 18px;
+    --control-radius: 0.5rem;
+
+    // Variables de layout
+    --home-image-opacity: 0.5;
+    --h-navbar: 42px;
+    --side-height: 56px;
+    --side-compact-width: 56px;
+
+    // Variables de Sidebar (menú lateral)
+    --slide-active-color: #fff;
+    --slide-bg: white;
+    --slide-link-color: #6d6d6d;
+    --slide-bg-sub: white;
+    --slide-link-hover-bg: #ebf2ff;
+    --slide-padding: 0.2rem;
+    --slide-active-shadow: var(--primary);
+    --slide-active-radius: 10px;
+    --slide-border-color: var(--border-color);
+
+    --bloqueado: red; // Variable de estado
+    --navbar-border-color: var(--border-color);
+
+    // Variables de compatibilidad (ej. Tailwind)
+    --tw-ring-offset-shadow: 0 0 #0000;
+    --tw-ring-shadow: 0 0 #0000;
+
+    // Colores de texto base
+    --text-color-invert: #ffffff;
+    --text-color-dark: #ffffff;
+
+    // Header
+    --header: var(--navbar-bg);
+
+    // Tables
+    --table-box-bg: #ffffff;
+    --table-box-border: #f2f3f4;
+    --table-box-shadow: 0 2px 4px #0000000d;
+    --table-box-color: #222222;
+    --table-box-cell-border: #dee2e6;
+    --table-box-active-bg: #ddedff;
+
+    // Modal
+    --modal-bg: white;
+    --modal-shadow: 2px 6px 10px #5c5c5d;
+
+    // Input
+    --form-control-color: black;
+    --form-control-bg: #fdfdfd;
+    --form-control-border: #d1d1d1;
+    --form-control-border-focus: var(--primary);
+
+    // Input con color primario
+    --form-control-primary-bg: #d9ebff;
+    --form-control-primary-color: var(--primary);
+
+    // Bordes
+    --border-color-detalle: #333;
+    --border-color-2: #bbbbbb;
+
+    // Spinner
+    --spinner-bg: #ffffffa9;
+    --spiner-color: #333;
+
+    // Loading overlay
+    --loading-bg: rgba(255, 255, 255, 0.75);
+
+    --extra-bg: #e91e63;
+    --bs-border-radius-sm: var(--control-radius);
+}

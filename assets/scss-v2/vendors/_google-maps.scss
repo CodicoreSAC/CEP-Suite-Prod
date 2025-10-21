@@ -1,0 +1,21 @@
+// =============================================================================
+// Vendors -> Google Maps
+// =============================================================================
+// Contiene sobreescrituras de estilos para el autocompletado de Google Maps
+// (Places Autocomplete Container).
+// Extraído del antiguo _reset.scss.
+// =============================================================================
+
+.pac-container {
+    z-index: 99999999999;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    margin-top: 4px;
+    .pac-item {
+        padding: 8px;
+    }
+    .pac-item-query {
+        font-size: 17px;
+    }
+}

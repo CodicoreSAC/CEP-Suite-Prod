@@ -1,0 +1,167 @@
+// =============================================================================
+// Components -> Buttons
+// =============================================================================
+// Contiene estilos personalizados para botones.
+// Incluye estilos base y estilos para el tema oscuro extraídos de _theme.scss.
+// =============================================================================
+
+.btn {
+    &.btn-circle {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0;
+        font-size: 1.5rem;
+        i {
+            line-height: 1;
+        }
+
+        &.sm {}
+        &.lg {}
+        &.xPlg {}
+    }
+}
+
+.btn-refresh {
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
+    font-size: 20px;
+    padding: 0;
+    line-height: 36px;
+
+    &.btn-refresh-sm {
+        width: 30px;
+        height: 30px;
+        min-width: 30px;
+        min-height: 30px;
+        line-height: 30px;
+    }
+}
+
+.btn-lg-medio,
+.btn-lg-custom {
+    padding: 0.25rem 1.25rem;
+    font-size: 1.25em;
+    border-radius: 0.75em;
+    font-weight: bold;
+    border-width: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    &.btn-icon {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        i {
+            font-size: 1.2em;
+            line-height: 1;
+        }
+    }
+}
+
+.btn-md-medio,
+.btn-md-custom {
+    padding: 0.2rem 1rem;
+    font-size: 1em;
+    border-radius: 0.5em;
+    font-weight: bold;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    &.btn-icon {
+        line-height: 1;
+        position: relative;
+        i {
+            font-size: 1.2em;
+        }
+    }
+}
+
+.btn-sm-medio,
+.btn-sm-custom {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.75em;
+    border-radius: 0.5em;
+    font-weight: bold;
+    display: inline;
+    &.btn-icon {
+        line-height: 1;
+        position: relative;
+        padding-left: 1.5rem;
+        i {
+            font-size: 1.2em;
+            position: absolute;
+            top: 0.15rem;
+            left: 0.5rem;
+        }
+    }
+}
+
+// Estilos para tema oscuro extraídos de _theme.scss
+body {
+    &.fdark,
+    &.dark {
+        .btn-outline-dark {
+            --bs-btn-color: #ffffff;
+            --bs-btn-border-color: #ffffff;
+            --bs-btn-hover-color: #fff;
+            --bs-btn-hover-bg: #282828;
+            --bs-btn-hover-border-color: #ffffff;
+            --bs-btn-active-color: #000000;
+            --bs-btn-active-bg: #ffffff;
+            --bs-btn-active-border-color: #ffffff;
+        }
+
+        .btn-dark {
+            --bs-btn-color: #000;
+            --bs-btn-bg: #f8f9fa;
+            --bs-btn-border-color: #f8f9fa;
+            --bs-btn-hover-color: #000;
+            --bs-btn-hover-bg: #d3d4d5;
+            --bs-btn-hover-border-color: #c6c7c8;
+            --bs-btn-focus-shadow-rgb: 211, 212, 213;
+            --bs-btn-active-color: #000;
+            --bs-btn-active-bg: #c6c7c8;
+            --bs-btn-active-border-color: #babbbc;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #000;
+            --bs-btn-disabled-bg: #f8f9fa;
+            --bs-btn-disabled-border-color: #f8f9fa;
+        }
+
+        .btn-outline-secondary {
+            --bs-btn-color: #f8f9fa;
+            --bs-btn-border-color: #f8f9fa;
+            --bs-btn-hover-color: #000;
+            --bs-btn-hover-bg: #f8f9fa;
+            --bs-btn-hover-border-color: #f8f9fa;
+            --bs-btn-focus-shadow-rgb: 248, 249, 250;
+            --bs-btn-active-color: #000;
+            --bs-btn-active-bg: #f8f9fa;
+            --bs-btn-active-border-color: #f8f9fa;
+            --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+            --bs-btn-disabled-color: #f8f9fa;
+            --bs-btn-disabled-bg: transparent;
+            --bs-btn-disabled-border-color: #f8f9fa;
+            --bs-gradient: none;
+        }
+    }
+}
+
+// Estilos para .btn-primary extraídos de styles.scss de codicore-fe
+.btn-primary {
+    --bs-btn-bg: var(--bs-primary);
+    --bs-btn-border-color: var(--bs-primary-hover);
+    --bs-btn-hover-bg: var(--bs-primary-hover);
+    --bs-btn-hover-border-color: var(--bs-primary-hover);
+    --bs-btn-active-bg: var(--bs-primary-hover);
+    --bs-btn-active-border-color: var(--bs-primary-hover);
+    --bs-btn-disabled-bg: var(--bs-primary);
+    --bs-btn-disabled-border-color: var(--bs-primary);
+}

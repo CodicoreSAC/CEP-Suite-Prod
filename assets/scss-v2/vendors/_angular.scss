@@ -1,0 +1,15 @@
+// =============================================================================
+// Vendors -> Angular
+// =============================================================================
+// Contiene sobreescrituras de estilos para librerías del ecosistema de Angular,
+// como Angular CDK.
+// Extraído del antiguo _reset.scss.
+// =============================================================================
+
+.ae-font.ae-picker {
+    border-radius: 0.25rem;
+}
+
+.cdk-overlay-container {
+    z-index: 9999;
+}

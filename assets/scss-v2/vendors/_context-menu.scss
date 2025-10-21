@@ -1,0 +1,123 @@
+// =============================================================================
+// Vendors -> Context Menu
+// =============================================================================
+// Contiene sobreescrituras de estilos para la librería de menú contextual
+// (ngx-contextmenu).
+// Extraído del antiguo _reset.scss y _template.scss
+// =============================================================================
+
+// =============================================================================
+// Vendors -> NGX-Contextmenu
+// =============================================================================
+
+:root {
+    // NGX-Contextmenu
+    --ngx-contextmenu-text-color: black;
+    --ngx-contextmenu-font-family: 'Montserrat', sans-serif;
+    --ngx-contextmenu-item-padding: 0.2rem 0.4rem 0.2rem 0;
+    --ngx-contextmenu-item-separator-padding: 5px;
+    --ngx-contextmenu-font-size: 1.15rem;
+    --ngx-contextmenu-icon-size: 1.3rem;
+    --ngx-contextmenu-border-radius: 10px;
+}
+
+// --- Estilos de _reset.scss ---
+context-menu-content .dropdown-menu.show {
+    border: 1px solid #d0d0d0;
+    border-radius: 10px;
+    font-size: 18px;
+    min-width: 220px;
+    padding: 5px 0;
+}
+
+context-menu-content ul li button > div {
+    width: 100%;
+}
+
+.ngx-contextmenu .ngx-core-context-item:disabled {
+    color: inherit;
+    cursor: pointer;
+    &:hover {
+        background-color: var(--ngx-contextmenu-item-background-hover-color);
+        color: var(--ngx-contextmenu-item-text-hover-color);
+    }
+}
+
+// --- Estilos de _template.scss ---
+context-menu-content .dropdown-menu {
+    background-color: white;
+}
+
+.ngx-contextmenu {
+    --ngx-contextmenu-padding: 0.1rem 0;
+    --ngx-contextmenu-text-color: var(--fuse-text-default);
+    --ngx-contextmenu-border: 1px solid rgb(54 54 54);
+    .ngx-core-context-item {
+        --ngx-contextmenu-item-padding: 0.15rem 0.35rem 0.15rem 0;
+        --ngx-contextmenu-item-separator-padding: 0.1rem;
+    }
+}
+
+context-menu-content,
+.dropdown,
+.dropdown-menu {
+    ._items {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        .icons:not(i) {
+            min-width: 50px;
+            font-size: var(--ngx-contextmenu-icon-size);
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            i.icon {
+                height: 30px;
+                width: 20px;
+                text-align: left;
+                display: flex;
+                align-items: center;
+            }
+        }
+        .label {
+            flex-grow: 1;
+            text-align: left;
+            min-width: 120px;
+        }
+        .atajo {
+            width: 30px;
+            text-align: center;
+            font-size: 11px;
+        }
+        img {
+            width: 20px;
+        }
+    }
+}
+
+context-menu-content li {
+    display: block;
+    &.divider {
+        height: 0;
+        margin: 0.5rem 0;
+        overflow: hidden;
+        border-top: 1px solid #e9ecef;
+    }
+}
+
+context-menu-content li:first-child {
+    border-top: none;
+}
+
+context-menu-content a {
+    color: #333333;
+    display: block;
+    padding: 0.1rem 0;
+}
+
+context-menu-content a:hover {
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+}

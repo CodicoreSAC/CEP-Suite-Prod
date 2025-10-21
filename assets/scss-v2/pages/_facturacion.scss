@@ -1,0 +1,165 @@
+._pdf {
+    // background-image: url(../img/iconos/pdf.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+._sunat {
+    // background-image: url(../img/iconos/sunat.png);
+    background-size: 22px;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+._sunat-border {
+    // background-image: url(../img/iconos/sunat-border.png);
+    background-size: 42px;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+._xml {
+    // background-image: url(../img/iconos/xml.png);
+    background-size: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+._cdr {
+    // background-image: url(../img/iconos/cdr.png);
+
+    background-size: 29px;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+._caja {
+    background: #e91e63;
+    color: white;
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    text-align: center;
+    line-height: 34px;
+    // position: absolute;
+    position: relative;
+    &._admin {
+        background: #1b7bff;
+    }
+    &.__small {
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+        line-height: 20px;
+    }
+    // &.__flotante {
+    //     position: absolute;
+    //     right: 6px;
+    //     top: 14px;
+    // }
+}
+
+app-ui-inventory-search-input .dropdown-menu {
+    &.show {
+        left: 0 !important;
+    }
+}
+app-ui-insumo-detail-search-input .dropdown-menu {
+    &.show {
+        left: -209px !important;
+    }
+}
+
+.dropdown-menu._productos {
+    &.show {
+        left: -25px !important;
+    }
+}
+app-ui-proveedor-search-input .dropdown-menu,
+app-ui-client-search-input .dropdown-menu,
+app-ui-inventory-search-input .dropdown-menu,
+app-ui-insumo-detail-search-input .dropdown-menu,
+.dropdown-menu._productos {
+    &.show {
+        background-color: var(--bg-card);
+        // background: #f4f5f9;
+        // padding: 5px;
+        overflow: auto;
+        max-height: calc(100vh - 300px);
+        padding: 0;
+        width: calc(100vw - 10px);
+        // left: -209px !important;
+        // left: -25px !important;
+        // transform: translateX(0px) !important;
+        // right: 40px !important;
+        // left: -20px !important;
+        // position: fixed !important;
+        // top: inherit !important;
+        // transform: translate(0, 37px) !important;
+        .label {
+            //margin-right: 5px;
+            flex-grow: inherit;
+            min-width: auto;
+        }
+        .dropdown-item {
+            position: relative;
+            border-radius: 5px;
+            // background: white;
+            padding: 0;
+            border: none;
+            white-space: normal;
+
+            b.unico {
+                margin-right: 10px;
+                padding: 1px 8px;
+                border-radius: 10px;
+                background: #000000;
+                color: #ffffff;
+            }
+            // &{
+            &.active,
+            &:active {
+                color: #fff;
+                text-decoration: none;
+                background-color: #3f51b5 !important;
+                ._modelo {
+                    color: #e91e63;
+                    background: white;
+                    padding: 5px;
+                    border-radius: 5px;
+                    font-weight: bold;
+                }
+                .almacenes {
+                    color: #000000;
+                }
+                b.unico {
+                    background: #e91e63;
+                }
+                .label {
+                    color: #ffe500;
+                    font-weight: bold;
+                }
+                app-viewcolor > div {
+                    border: 2px solid white;
+                }
+            }
+            // }
+        }
+    }
+}
+
+.popover-custom {
+    // min-width: 500px;
+    min-width: fit-content;
+    .popover-body {
+        // padding: 0;
+        padding: 2px;
+    }
+}
+
+.td-active {
+    background: #ff9800 !important;
+    color: white !important;
+}
